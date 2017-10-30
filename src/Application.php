@@ -8,6 +8,12 @@ class Application
     const DEFAULT_CONTROLLER = 'DefaultCtrl';
     const DEFAULT_ACTION = 'index';
     
+    public function __construct()
+    {
+        $err = set_error_handler([$this, 'handleError']);
+        error_reporting(E_ALL | E_STRICT);
+    }
+    
     public function run($queryString) 
     {   
         $rParameter = isset($queryString['r']) ? filter_var($queryString['r'], FILTER_SANITIZE_STRING) : '';
@@ -36,13 +42,33 @@ class Application
     }
     
     public function instantiateController($route) {
-        $controller = '\app\controller\\' . $route['controller'];
-        return new $controller;
+        try {
+            $controller = '\app\controller\\' . $route['controller'];
+            $obj = new $controller;
+        } catch (\Throwable $ex) {
+            //echo $e->getMessage();
+        } catch (\Exception $e) {
+            //echo $e->getMessage();
+        }
+        
+        return $obj;
     }
-    
     
     public function response($object, $method, $arguments = []) {
         $response = call_user_func_array([$object, $method], $arguments);
+    }
+    
+    public function handleError($errno, $errstr, $errfile, $errline)
+    {
+        if (!(error_reporting() & $errno)) {
+            // This error code is not included in error_reporting, so let it fall
+            // through to the standard PHP error handler
+            return false;
+        }
+
+        echo $errstr;
+        /* Don't execute PHP internal error handler */
+        return true;
     }
     
 }
