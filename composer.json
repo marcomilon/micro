@@ -1,0 +1,23 @@
+{
+  "name": "fullstack-pe/micro",
+  "description": "Poor little php framework",
+  "license": "MIT",
+  "keywords": ["framework"],
+  "authors": [
+    {
+      "name": "Marco Milon",
+      "email": "marco.milon@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "atoum/atoum": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "micro\\": "src"
+    }
+  }
+}
