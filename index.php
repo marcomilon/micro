@@ -2,8 +2,8 @@
 
 require 'vendor/autoload.php';
 
-use Micro\Application;
+use micro\Application;
 
-$_GET['r'] = "/test";
+$_GET['r'] = "tete/test";
 $app = new Application();
 $app->run($_GET);

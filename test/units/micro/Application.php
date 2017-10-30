@@ -42,4 +42,20 @@ class Application extends atoum
         
     }
     
+    
+    public function testNotFoundController() 
+    {   
+        
+        $this->given($app = new \micro\Application())
+            ->and($route = $app->parseRoute('notfound/action'))
+            ->and($obj = $app->instantiateController($route))
+            ->exception(
+                function() use($obj) {
+                    // this code throws an exception: throw new \Exception;
+                    $obj->instantiateController($route);
+                }
+            );
+        
+    }
+    
 }
