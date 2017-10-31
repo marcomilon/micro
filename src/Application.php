@@ -10,7 +10,7 @@ class Application
     
     public function __construct()
     {
-        $err = set_error_handler([$this, 'handleError']);
+        set_error_handler([$this, 'handleError']);
         error_reporting(E_ALL | E_STRICT);
     }
     
@@ -41,21 +41,30 @@ class Application
         ];
     }
     
-    public function instantiateController($route) {
+    public function instantiateController($route) 
+    {
         try {
             $controller = '\app\controller\\' . $route['controller'];
             $obj = new $controller;
-        } catch (\Throwable $ex) {
-            //echo $e->getMessage();
+        } catch (\Throwable $e) {
+            $this->sendResponse('Bad request', 400);
         } catch (\Exception $e) {
-            //echo $e->getMessage();
+            $this->sendResponse('Bad request', 400);
         }
         
         return $obj;
     }
     
-    public function response($object, $method, $arguments = []) {
+    public function callAction($object, $method, $arguments = []) 
+    {
         $response = call_user_func_array([$object, $method], $arguments);
+    }
+    
+    public function sendResponse($body, $status) 
+    {
+        http_response_code($status);
+        echo $body;
+        exit();        
     }
     
     public function handleError($errno, $errstr, $errfile, $errline)
@@ -66,7 +75,8 @@ class Application
             return false;
         }
 
-        echo $errstr;
+        echo $errno;
+        exit();
         /* Don't execute PHP internal error handler */
         return true;
     }
