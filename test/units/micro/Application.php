@@ -48,12 +48,14 @@ class Application extends atoum
         
         $this->given($app = new \micro\Application())
             ->and($route = $app->parseRoute('notfound/action'))
-            ->and($obj = $app->instantiateController($route))
+            ->then 
+            ->object($app->instantiateController($route))
+            ->then
             ->output(
                 function() {
                     echo 'Bad request';
                 }
-            );
+            )->contains('Bad');
         
     }
     
