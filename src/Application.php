@@ -47,9 +47,9 @@ class Application
             $controller = '\app\controller\\' . $route['controller'];
             $obj = new $controller;
         } catch (\Throwable $e) {
-            $this->sendResponse('Bad request', 400);
+            $this->sendResponse('Not found', 404);
         } catch (\Exception $e) {
-            $this->sendResponse('Bad request', 400);
+            $this->sendResponse('Not found', 404);
         }
         
         return $obj;
@@ -64,7 +64,6 @@ class Application
     {
         http_response_code($status);
         echo $body;
-        exit();        
     }
     
     public function handleError($errno, $errstr, $errfile, $errline)
@@ -75,8 +74,9 @@ class Application
             return false;
         }
 
-        echo $errno;
-        exit();
+        if (!headers_sent()) {
+            $this->sendResponse($errno, 500);        
+        }
         /* Don't execute PHP internal error handler */
         return true;
     }
