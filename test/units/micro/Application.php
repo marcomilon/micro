@@ -32,17 +32,40 @@ class Application extends atoum
         }
     }
     
-    public function testInstantiateController() 
+    public function testController() 
     {   
-        
         $this->given($app = new \micro\Application())
             ->and($route = $app->parseRoute('custom/action'))
             ->then
             ->object($app->instantiateController($route));
-        
+    }    
+    
+    public function testAction() 
+    {   
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $route = $app->parseRoute('custom/index');
+                $obj = $app->instantiateController($route);
+                $app->callAction($obj, $route['action']);
+            }
+        )->isEqualTo("Hello world");
+    } 
+    
+    public function testActionWithArguments() 
+    {   
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $_GET['arg1'] = "arg1";
+                $_GET['arg2'] = "arg2";
+                $route = $app->parseRoute('custom/action');
+                $obj = $app->instantiateController($route);
+                $app->callAction($obj, $route['action'], $_GET);
+            }
+        )->isEqualTo("arg1,arg2");
     }
-    
-    
+        
     public function testControllerNotFound() 
     {   
         $app = new \micro\Application();
@@ -51,7 +74,44 @@ class Application extends atoum
                 $route = $app->parseRoute('notvalid/action');
                 $app->instantiateController($route);
             }
-        )->contains("Not found");
+        )->isEqualTo("Not found");
+    }
+    
+    public function testActionNotFound() 
+    {   
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $route = $app->parseRoute('custom/invalid');
+                $obj = $app->instantiateController($route);
+                $app->callAction($obj, $route['action']);
+            }
+        )->isEqualTo("Not found");
+    }
+    
+    public function testActionWithEmptyRequiredArguments() 
+    {   
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $route = $app->parseRoute('custom/action');
+                $obj = $app->instantiateController($route);
+                $app->callAction($obj, $route['action']);
+            }
+        )->isEqualTo("Bad request");
+    }
+    
+    public function testActionWithMissingArguments() 
+    {   
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $_GET['arg1'] = "arg1";
+                $route = $app->parseRoute('custom/action');
+                $obj = $app->instantiateController($route);
+                $app->callAction($obj, $route['action'], $_GET);
+            }
+        )->isEqualTo("Bad request");
     }
     
 }
