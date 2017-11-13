@@ -2,7 +2,9 @@
 
 namespace app\controller;
 
-class CustomCtrl
+use micro\Controller;
+
+class CustomCtrl extends Controller
 {
     public function action($arg1, $arg2) 
     {

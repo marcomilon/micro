@@ -8,8 +8,6 @@ class Application
     const DEFAULT_CONTROLLER = 'DefaultCtrl';
     const DEFAULT_ACTION = 'index';
     
-    private $responseSent = false;
-    
     public function __construct()
     {
         set_error_handler([$this, 'handleError']);
@@ -19,9 +17,15 @@ class Application
     public function run($queryString) 
     {   
         $rParameter = isset($queryString['r']) ? filter_var($queryString['r'], FILTER_SANITIZE_STRING) : '';
-        $route = $this->parseRoute($rParameter);
         
-        $controller = $this->instantiateController($route);
+        $route = $this->parseRoute($rParameter); 
+        $controllerName = $route['controller'];
+        $actionName = $route['action'];
+        
+        unset($queryString['r']);
+        
+        $controller = $this->instantiateController($controllerName);
+        $this->callAction($controller, $actionName, $queryString);
     }
     
     public function parseRoute($rParameter) 
@@ -43,51 +47,55 @@ class Application
         ];
     }
     
-    public function instantiateController($route) 
+    public function instantiateController($controllerName) 
     {
         try {
-            $controller = '\app\controller\\' . $route['controller'];
+            $controller = '\app\controller\\' . $controllerName;
             $object = new $controller;
+            return $object;
         } catch (\Throwable $e) {
             $this->sendResponse('Not found', 404);
         } catch (\Exception $e) {
             $this->sendResponse('Not found', 404);
         }
-        
-        return $object;
     }
     
-    public function callAction($object, $method, $arguments = []) 
+    public function callAction($controller, $action, $arguments = []) 
     {
-        if(is_callable([$object, $method])) {
-            $parameters = [];
-            $r = new \ReflectionMethod($object, $method);
-            $params = $r->getParameters();
-            
-            foreach ($params as $param) {
-                $getParameter = $param->getName();
-                $paramValue = isset($arguments[$getParameter]) ? filter_var($arguments[$getParameter], FILTER_SANITIZE_STRING) : '';
-                if(!empty($paramValue)) {
-                    $parameters[$getParameter] = $paramValue;
+        $hasExpectedParatemers = true;
+        if(is_object($controller)) {
+            if(is_callable([$controller, $action])) {
+                $parameters = [];
+                $r = new \ReflectionMethod($controller, $action);
+                $params = $r->getParameters();
+                
+                foreach ($params as $param) {
+                    $getParameter = $param->getName();
+                    $paramValue = isset($arguments[$getParameter]) ? filter_var($arguments[$getParameter], FILTER_SANITIZE_STRING) : '';
+                    if(!empty($paramValue)) {
+                        $parameters[$getParameter] = $paramValue;
+                    } else {
+                        $hasExpectedParatemers = false;
+                    }
+                }
+                
+                if($hasExpectedParatemers) {
+                    $response = call_user_func_array([$controller, $action], $parameters);
+                    $this->sendResponse($response, 200);
                 } else {
                     $this->sendResponse('Bad request', 400);
                 }
+                
+            } else {
+                $this->sendResponse('Not found', 404);
             }
-            
-            $response = call_user_func_array([$object, $method], $parameters);
-            $this->sendResponse($response, 200);
-        } else {
-            $this->sendResponse('Not found', 404);
         }
     }
     
     public function sendResponse($body, $status) 
     {
-        if (!$this->isResponseSent()) {
-            http_response_code($status);
-            $this->responseSent = true;
-            echo $body;
-        }
+        http_response_code($status);
+        echo $body;
     }
     
     public function handleError($errno, $errstr, $errfile, $errline)
