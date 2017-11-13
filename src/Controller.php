@@ -3,9 +3,15 @@
 namespace micro;
 
 class Controller {
-
-  public function toString() {
-      echo "Micro";
-  }
+    
+    public function render($view, $params = [])
+    {
+        
+    }
+    
+    public function loadLayout() 
+    {
+        include dirname(__DIR__) . '/../web/src/layout/header.php';
+    }
 
 }
