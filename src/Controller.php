@@ -4,6 +4,8 @@ namespace micro;
 
 class Controller {
     
+    use Response;
+    
     private $viewPath;
     private $basePath;
     
@@ -17,24 +19,37 @@ class Controller {
     
     public function render($view, $params = [])
     {
-        $content = $this->loadView($view, $params);
-        return $this->loadLayout($content);
+        try {
+            $content = $this->renderView($view, $params);
+            $out = $this->renderLayout($content);
+            return $out;
+        } catch (\Exception $e) {
+            $this->send($e->getMessage(), 500);
+        }
     }
     
-    private function loadLayout($content) 
+    private function renderView($view, $params) 
+    {    
+        $file = $this->viewPath . '/' . $view . '.php';
+        return $this->renderFile($file, $params);
+    }
+    
+    private function renderLayout($content) 
     {
-        ob_start();
-        require $this->basePath . '/views/layouts/main.php';
-        $out = ob_get_clean();
-        return $out;        
+        $params = ['content' => $content];
+        $file = $this->basePath . '/views/layouts/main.php';
+        return $this->renderFile($file, $params);
     }
     
-    private function loadView($view, $params) {
-        ob_start();
-        extract ($params);
-        require $this->viewPath . '/' . $view . '.php';
-        $out = ob_get_clean();
-        
-        return $out;
+    private function renderFile($file, $params) {
+        if (file_exists($file)) {
+            ob_start();
+            extract ($params);
+            require $file;
+            $out = ob_get_clean();        
+            return $out;
+        } else {
+            throw new \Exception("The view file does not exist: $file");
+        }
     }
 }

@@ -28,4 +28,8 @@ class CustomCtrl extends Controller
             'arg2' => $arg2
         ]);
     }
+    
+    public function viewnotfound() {
+        return $this->render('viewnotfound');
+    }
 }
