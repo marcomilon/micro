@@ -15,4 +15,17 @@ class CustomCtrl extends Controller
     {
         return "Hello world";
     }
+    
+    public function hello() 
+    {
+        return $this->render('hello');
+    }
+    
+    public function arguments($arg1, $arg2) 
+    {
+        return $this->render('arguments', [
+            'arg1' => $arg1,
+            'arg2' => $arg2
+        ]);
+    }
 }

@@ -5,6 +5,7 @@ namespace micro;
 class Application 
 {
     
+    const CONTROLLER_SUFFIX = 'Ctrl';
     const DEFAULT_CONTROLLER = 'DefaultCtrl';
     const DEFAULT_ACTION = 'index';
     
