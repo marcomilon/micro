@@ -8,12 +8,33 @@ use atoum;
 
 class Application extends atoum
 {
-    public function testLoadLayouts() {
-        $this->when(
-            function() {
-                $ctrl = new \app\controller\CustomCtrl();    
-                $ctrl->loadLayout();
+
+    public function testRender() {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderCustomCtrlHello.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/hello'
+                ];
+                $app->run($queryString);
             }
-        )->error()->notExists();
+        )->isEqualToContentsOfFile($expectedRendering);
     }
+    
+    public function testRenderWithArguments() {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderCustomCtrlArguments.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/arguments',
+                    'arg1' => 'arg1',
+                    'arg2' => 'arg2'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
 }
