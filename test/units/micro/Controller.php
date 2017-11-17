@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
 
 use atoum;
 
-class Application extends atoum
+class Controller extends atoum
 {
 
     public function testRender() 
