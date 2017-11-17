@@ -1,12 +1,13 @@
 {
-  "name": "marcomilon/micro",
+  "name": "fullstackpe/micro",
   "description": "Poor little php framework",
   "license": "MIT",
   "keywords": ["framework"],
   "authors": [
     {
       "name": "Marco Milon",
-      "email": "marco.milon@gmail.com"
+      "email": "marco.milon@gmail.com",
+      "homepage": "https://www.fullstack.pe"      
     }
   ],
   "require": {
