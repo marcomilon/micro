@@ -1,6 +1,7 @@
 # Poor little php framework
 
 [![Latest Stable Version](https://poser.pugx.org/fullstackpe/micro/v/stable)](https://packagist.org/packages/fullstackpe/micro)
+[![Build Status](https://travis-ci.org/marcomilon/micro.svg?branch=master)](https://travis-ci.org/marcomilon/micro)
 
 Micro is basic php framework that everybody can understand how it works.
 
