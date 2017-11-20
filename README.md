@@ -2,6 +2,8 @@
 
 ![alt text](https://raw.githubusercontent.com/marcomilon/micro-basic-app/master/img/micro.jpg)
 
+[![Latest Stable Version](https://poser.pugx.org/fullstackpe/micro/v/stable)](https://packagist.org/packages/fullstackpe/micro)
+
 Micro is basic php framework that everybody can understand how it works.
 
 For now it has only three files:
