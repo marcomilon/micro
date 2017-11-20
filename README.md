@@ -1,7 +1,5 @@
 # Poor little php framework
 
-![alt text](https://raw.githubusercontent.com/marcomilon/micro-basic-app/master/img/micro.jpg)
-
 [![Latest Stable Version](https://poser.pugx.org/fullstackpe/micro/v/stable)](https://packagist.org/packages/fullstackpe/micro)
 
 Micro is basic php framework that everybody can understand how it works.
@@ -38,6 +36,8 @@ You can use your browser to access the installed Micro basic template with the f
 
 The word micro is used in common-day Peruvian Spanish as an abbreviation for microbus (minibus). 
 Micros race from one street corner to another along all the major arterial city roads. They run fast just like this framework.
+
+![alt text](https://raw.githubusercontent.com/marcomilon/micro-basic-app/master/img/micro.jpg)
 
 #### Credits
 
