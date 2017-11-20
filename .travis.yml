@@ -2,5 +2,5 @@ language: php
 php:
   - 7.0
 
-before_script: wget http://downloads.atoum.org/nightly/atoum.phar
-script: php atoum.phar -d test/units
+before_script: composer require atoum/atoum
+script: vendor/bin/atoum -d test/units
