@@ -20,7 +20,7 @@ First you need to install Composer. You may do so by following the instructions 
 
 With Composer installed, you can install Micro basic application template by running the following command under a Web-accessible folder:
 
-> composer create-project --prefer-dist fullstackpe/micro-basic-app:dev-master basic
+> composer create-project --prefer-dist fullstackpe/micro-basic-app basic
 
 ## Running Micro
 
