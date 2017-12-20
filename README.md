@@ -3,9 +3,9 @@
 [![Latest Stable Version](https://poser.pugx.org/fullstackpe/micro/v/stable)](https://packagist.org/packages/fullstackpe/micro)
 [![Build Status](https://travis-ci.org/marcomilon/micro.svg?branch=master)](https://travis-ci.org/marcomilon/micro)
 
-Micro is basic php framework that everybody can understand how it works.
+Micro is basic PHP framework that everybody can understand how it works from the inside.
 
-For now it has only three files:
+It only has three files:
 
 1. Application.php
 2. Controller.php
@@ -29,7 +29,7 @@ You can run micro with php Built-in web server. Run the following command:
 
 > php -S localhost:8080
 
-You can use your browser to access the installed Micro basic template with the following URL:
+Open localhost:8080 in your browser:
 
 > http://localhost:8080
 
