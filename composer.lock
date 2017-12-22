@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "787c1c18d1c72941c987875fe66f32a8",
+    "content-hash": "f4ea8ade97c1ba35a2a4ac3d2331d147",
     "packages": [
         {
             "name": "fullstackpe/micro-db",
@@ -99,16 +99,16 @@
     "packages-dev": [
         {
             "name": "atoum/atoum",
-            "version": "dev-master",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "24ec4c46f4036113439e1e38e92252d65a328bfa"
+                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/24ec4c46f4036113439e1e38e92252d65a328bfa",
-                "reference": "24ec4c46f4036113439e1e38e92252d65a328bfa",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
+                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^5.6.0 || ^7.0.0 <7.4.0"
+                "php": "^5.6.0 || ^7.0.0"
             },
             "replace": {
                 "mageekguy/atoum": "*"
@@ -178,11 +178,11 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2017-11-06T21:02:33+00:00"
+            "time": "2017-09-07T08:27:13+00:00"
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "fullstackpe/micro-form": 20
     },

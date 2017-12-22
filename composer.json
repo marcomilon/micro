@@ -3,7 +3,6 @@
     "description": "Poor little php framework",
     "license": "MIT",
     "keywords": ["framework"],
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Marco Milon",
@@ -20,7 +19,7 @@
     "require": {
         "php": ">=7.0.0",
         "fullstackpe/micro-db": "^1.0",
-        "fullstackpe/micro-form": "dev-master"
+        "fullstackpe/micro-form": "@dev"
     },
     "require-dev": {
         "atoum/atoum": "^3.2"
