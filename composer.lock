@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6215fee789cd4bd37a7c9990dacf6647",
+    "content-hash": "787c1c18d1c72941c987875fe66f32a8",
     "packages": [
         {
             "name": "fullstackpe/micro-db",
@@ -48,21 +48,67 @@
                 "orm"
             ],
             "time": "2017-12-19T20:04:40+00:00"
+        },
+        {
+            "name": "fullstackpe/micro-form",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcomilon/micro-form.git",
+                "reference": "5fafb0b02192d068948b55843fd4a128e339ef06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcomilon/micro-form/zipball/5fafb0b02192d068948b55843fd4a128e339ef06",
+                "reference": "5fafb0b02192d068948b55843fd4a128e339ef06",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "atoum/atoum": "^3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "micro\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Milon",
+                    "email": "marco.milon@gmail.com",
+                    "homepage": "https://github.com/marcomilon"
+                }
+            ],
+            "description": "Form builder",
+            "keywords": [
+                "form builder"
+            ],
+            "support": {
+                "source": "https://github.com/marcomilon/micro-form/tree/master",
+                "issues": "https://github.com/marcomilon/micro-form/issues"
+            },
+            "time": "2017-12-22T21:56:32+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "atoum/atoum",
-            "version": "3.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a"
+                "reference": "24ec4c46f4036113439e1e38e92252d65a328bfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
-                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/24ec4c46f4036113439e1e38e92252d65a328bfa",
+                "reference": "24ec4c46f4036113439e1e38e92252d65a328bfa",
                 "shasum": ""
             },
             "require": {
@@ -70,7 +116,7 @@
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^5.6.0 || ^7.0.0"
+                "php": "^5.6.0 || ^7.0.0 <7.4.0"
             },
             "replace": {
                 "mageekguy/atoum": "*"
@@ -132,12 +178,14 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2017-09-07T08:27:13+00:00"
+            "time": "2017-11-06T21:02:33+00:00"
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "fullstackpe/micro-form": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -1,25 +1,33 @@
 {
-  "name": "fullstackpe/micro",
-  "description": "Poor little php framework",
-  "license": "MIT",
-  "keywords": ["framework"],
-  "authors": [
-    {
-      "name": "Marco Milon",
-      "email": "marco.milon@gmail.com",
-      "homepage": "https://www.fullstack.pe"      
+    "name": "fullstackpe/micro",
+    "description": "Poor little php framework",
+    "license": "MIT",
+    "keywords": ["framework"],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Marco Milon",
+            "email": "marco.milon@gmail.com",
+            "homepage": "https://www.fullstack.pe"      
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/marcomilon/micro-form"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "fullstackpe/micro-db": "^1.0",
+        "fullstackpe/micro-form": "dev-master"
+    },
+    "require-dev": {
+        "atoum/atoum": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "micro\\": "src"
+        }
     }
-  ],
-  "require": {
-    "php": ">=7.0.0",
-    "fullstackpe/micro-db": "^1.0"
-  },
-  "require-dev": {
-    "atoum/atoum": "^3.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "micro\\": "src"
-    }
-  }
 }
