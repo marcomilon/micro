@@ -56,7 +56,7 @@ class Application extends atoum
                 ];
                 $app->run($queryString);
             }
-        )->isEqualTo("Not found");
+        )->isEqualTo("Class '\app\controller\NotvalidCtrl' not found");
     }
     
     public function testRunActionNotFound() {        

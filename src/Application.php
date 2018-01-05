@@ -57,7 +57,7 @@ class Application
             $object = new $controller;
             return $object;
         } catch (\Throwable $e) {
-            $this->send('Not found', 404);
+            $this->send($e->getMessage(), 500);
         } catch (\Exception $e) {
             $this->send('Not found', 404);
         }
