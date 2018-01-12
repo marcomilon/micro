@@ -9,11 +9,7 @@ Micro is a lightweight PHP framework that implements the MVC pattern.
 
 First you need to install Composer. You may do so by following the instructions at [getcomposer.org](https://getcomposer.org/download/). After that run
 
-<<<<<<< 604a308fe48557ab931a8264ba73b7b990251fd0
 > composer require fullstackpe/micro
-=======
-`composer require fullstackpe/micro`
->>>>>>> Add support for modules
 
 If you prefer you can create a composer.json in your project folder.
 
@@ -29,7 +25,7 @@ If you prefer you can create a composer.json in your project folder.
 
 You can install a Micro basic application template by running the following command under a Web-accessible folder:
 
-`composer create-project --prefer-dist fullstackpe/micro-basic-app basic`
+> composer create-project --prefer-dist fullstackpe/micro-basic-app basic
 
 ### How it works?
 
