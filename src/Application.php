@@ -95,7 +95,7 @@ class Application
     private function instantiateController($controllerName) 
     {
         try {
-            $controller = '\app\controller\\' . $controllerName;
+            $controller = '\app\controllers\\' . $controllerName;
             $object = new $controller;
             return $object;
         } catch (\Throwable $e) {
