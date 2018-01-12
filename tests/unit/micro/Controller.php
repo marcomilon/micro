@@ -3,6 +3,7 @@
 namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
+require_once __DIR__ . '/../../app/modulo/controllers/AppCtrl.php';
 
 use atoum;
 
@@ -66,4 +67,73 @@ class Controller extends atoum
         )->isEqualTo("Bad request");
     }
     
+    public function testController() 
+    {
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'modulo/app/index'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualTo("Hello modulo");
+    }
+    
+    public function testModuloRender() 
+    {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderModuloAppCtrlIndex.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'modulo/app/hello'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
+    public function testModuloRenderWithArguments() 
+    {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderModuloAppCtrlArguments.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'modulo/app/action',
+                    'arg1' => 'arg1',
+                    'arg2' => 'arg2'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
+    public function testModuloRenderMissingArguments() 
+    {
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'modulo/app/action',
+                    'arg1' => 'arg1'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualTo("Bad request");
+    }
+    
+    public function testModuloRenderViewNotFound() 
+    {
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'modulo/app/viewnotfound'
+                ];
+                $app->run($queryString);
+            }
+        )->contains("The view file does not exist");
+    }
 }
