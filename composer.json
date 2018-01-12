@@ -1,6 +1,6 @@
 {
     "name": "fullstackpe/micro",
-    "description": "Poor little php framework",
+    "description": "Lightweight MVC framework",
     "license": "MIT",
     "keywords": ["framework"],
     "authors": [
