@@ -4,6 +4,7 @@ namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
 require_once __DIR__ . '/../../app/modules/modulo/controllers/AppCtrl.php';
+require_once __DIR__ . '/../../app/modules/nolayout/controllers/NolayoutCtrl.php';
 
 use atoum;
 
@@ -135,5 +136,21 @@ class Controller extends atoum
                 $app->run($queryString);
             }
         )->contains("The view file does not exist");
+    }
+    
+    public function testModuloWithNoLayout() 
+    {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderModuloAppCtrlArguments.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'nolayout/nolayout/action',
+                    'arg1' => 'arg1',
+                    'arg2' => 'arg2'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
     }
 }
