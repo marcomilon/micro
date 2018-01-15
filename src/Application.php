@@ -118,7 +118,7 @@ class Application
             $controller = '\app\controllers\\' . $controllerName;
             
             if(!empty($module)) {
-                $controller = '\app\\' . $module .'\controllers\\'. $controllerName;
+                $controller = '\app\modules\\' . $module .'\controllers\\'. $controllerName;
             } 
             
             $object = new $controller;

@@ -3,7 +3,7 @@
 namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
-require_once __DIR__ . '/../../app/modulo/controllers/AppCtrl.php';
+require_once __DIR__ . '/../../app/modules/modulo/controllers/AppCtrl.php';
 
 use atoum;
 

@@ -1,6 +1,6 @@
 <?php 
 
-namespace app\modulo\controllers;
+namespace app\modules\modulo\controllers;
 
 use micro\Controller;
 
