@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4ea8ade97c1ba35a2a4ac3d2331d147",
+    "content-hash": "6401a478d700ed5d55922c43729adb03",
     "packages": [
         {
             "name": "fullstackpe/micro-db",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcomilon/micro-db.git",
-                "reference": "e3d641f0b8cf76e8d3e08cafc439d024e7d2b460"
+                "reference": "b14a4f80f144f4e58cd3260efbbb9141290aa66d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcomilon/micro-db/zipball/e3d641f0b8cf76e8d3e08cafc439d024e7d2b460",
-                "reference": "e3d641f0b8cf76e8d3e08cafc439d024e7d2b460",
+                "url": "https://api.github.com/repos/marcomilon/micro-db/zipball/b14a4f80f144f4e58cd3260efbbb9141290aa66d",
+                "reference": "b14a4f80f144f4e58cd3260efbbb9141290aa66d",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
             "keywords": [
                 "orm"
             ],
-            "time": "2017-12-19T20:04:40+00:00"
+            "time": "2018-02-09T20:33:56+00:00"
         },
         {
             "name": "fullstackpe/micro-form",
@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcomilon/micro-form.git",
-                "reference": "e5a40bddda90de71dbc82804dc3437eda82dd048"
+                "reference": "ef464006b7b1df1e4f82a89d5eea7efc6155da11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcomilon/micro-form/zipball/e5a40bddda90de71dbc82804dc3437eda82dd048",
-                "reference": "e5a40bddda90de71dbc82804dc3437eda82dd048",
+                "url": "https://api.github.com/repos/marcomilon/micro-form/zipball/ef464006b7b1df1e4f82a89d5eea7efc6155da11",
+                "reference": "ef464006b7b1df1e4f82a89d5eea7efc6155da11",
                 "shasum": ""
             },
             "require": {
@@ -93,7 +93,7 @@
                 "source": "https://github.com/marcomilon/micro-form/tree/master",
                 "issues": "https://github.com/marcomilon/micro-form/issues"
             },
-            "time": "2018-01-04T21:03:18+00:00"
+            "time": "2018-01-16T14:45:21+00:00"
         }
     ],
     "packages-dev": [
