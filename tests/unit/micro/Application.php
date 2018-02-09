@@ -71,4 +71,39 @@ class Application extends atoum
         )->isEqualTo("Not found");
     }
     
+    public function testRunActionConfig() {
+        
+        $config = [
+            'key' => 'Config value'
+        ];
+        
+        $app = new \micro\Application($config);
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/config'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualTo("Config value");
+    }
+    
+    public function testRunActionRenderConfig() {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderConfig.html';
+        
+        $config = [
+            'key' => 'Config value'
+        ];
+        
+        $app = new \micro\Application($config);
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/viewconfig'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
 }

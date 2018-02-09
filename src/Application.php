@@ -24,6 +24,11 @@ class Application
     use Response;
     
     /**
+    * @var array is an array used to customize the app
+    */
+    private $config = [];
+    
+    /**
     * @var string the default suffix of the classes representing the controllers
     */
     const CONTROLLER_SUFFIX = 'Ctrl';
@@ -38,10 +43,12 @@ class Application
     */
     const DEFAULT_ACTION = 'index';
     
-    public function __construct()
+    public function __construct($config = [])
     {
         set_error_handler([$this, 'handleError']);
         error_reporting(E_ALL | E_STRICT);
+        
+        $this->config = $config;
     }
     
     /**
@@ -122,6 +129,7 @@ class Application
             } 
             
             $object = new $controller;
+            $object->app = $this;
             return $object;
         } catch (\Throwable $e) {
             $this->send($e->getMessage(), 500);
@@ -171,6 +179,10 @@ class Application
                 $this->send('Not found', 404);
             }
         }
+    }
+    
+    public function getConfig() {
+        return $this->config;
     }
     
     public function handleError($errno, $errstr, $errfile, $errline)

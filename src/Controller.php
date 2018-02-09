@@ -16,6 +16,8 @@ class Controller {
     */
     use Response;
     
+    public $app;
+    
     /**
     * @var string the path to the view file to be rendered
     */
@@ -25,8 +27,6 @@ class Controller {
     * @var string the path to the current controller class file
     */
     private $basePath;
-    
-    private $nameSpace;
     
     /**
     * Set to class variables $viewPath and the $basePath. It Use reflection 

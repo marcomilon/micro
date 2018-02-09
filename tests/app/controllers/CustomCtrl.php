@@ -32,4 +32,13 @@ class CustomCtrl extends Controller
     public function viewnotfound() {
         return $this->render('viewnotfound');
     }
+    
+    public function config() {
+        $config = $this->app->getConfig();
+        return $config['key'];
+    }
+    
+    public function viewconfig() {
+        return $this->render('viewconfig');
+    }
 }
