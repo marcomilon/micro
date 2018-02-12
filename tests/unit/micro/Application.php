@@ -114,7 +114,7 @@ class Application extends atoum
             'db' => [
                 'servername' => '127.0.0.1',
                 'username' => 'root',
-                'password' => 'fullstack',
+                'password' => '',
                 'database' => 'mysql'
             ]
         ];
