@@ -1,1 +1,1 @@
-<?php $config = $this->app->getConfig() ?><p><?= $config['key'] ?></p>
+<?php $config = micro\Application::getConfig() ?><p><?= $config['key'] ?></p>

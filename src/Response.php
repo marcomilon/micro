@@ -7,7 +7,8 @@ namespace micro;
  * 
  * @author Marco Milon <marco.milon@gmail.com>
  */
-trait Response {
+trait Response 
+{
  
     /**
      * Parse the value of the r parameter in the GET request.

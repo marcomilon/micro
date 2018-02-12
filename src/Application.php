@@ -26,7 +26,7 @@ class Application
     /**
     * @var array is an array used to customize the app
     */
-    private $config = [];
+    private static $config = [];
     
     /**
     * @var string the default suffix of the classes representing the controllers
@@ -48,7 +48,7 @@ class Application
         set_error_handler([$this, 'handleError']);
         error_reporting(E_ALL | E_STRICT);
         
-        $this->config = $config;
+        self::$config = $config;
     }
     
     /**
@@ -129,7 +129,6 @@ class Application
             } 
             
             $object = new $controller;
-            $object->app = $this;
             return $object;
         } catch (\Throwable $e) {
             $this->send($e->getMessage(), 500);
@@ -181,8 +180,8 @@ class Application
         }
     }
     
-    public function getConfig() {
-        return $this->config;
+    public static function getConfig() {
+        return self::$config;
     }
     
     public function handleError($errno, $errstr, $errfile, $errline)

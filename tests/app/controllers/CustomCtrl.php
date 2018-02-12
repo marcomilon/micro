@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use micro\Application;
 use micro\Controller;
 
 class CustomCtrl extends Controller
@@ -34,11 +35,19 @@ class CustomCtrl extends Controller
     }
     
     public function config() {
-        $config = $this->app->getConfig();
+        $config = Application::getConfig();
         return $config['key'];
     }
     
     public function viewconfig() {
         return $this->render('viewconfig');
+    }
+    
+    public function record() {
+        $condition = [
+            ['=', 'help_category_id', '1']
+        ];
+        $model = \app\models\HelpCategory::find()->where($condition)->one();
+        return $model->name;
     }
 }

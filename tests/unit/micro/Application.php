@@ -3,6 +3,7 @@
 namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
+require_once __DIR__ . '/../../app/models/HelpCategory.php';
 
 use atoum;
 
@@ -104,6 +105,29 @@ class Application extends atoum
                 $app->run($queryString);
             }
         )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
+    public function testRunModel() {
+        
+        $config = [
+            'key' => 'Config value',
+            'db' => [
+                'servername' => '127.0.0.1',
+                'username' => 'root',
+                'password' => 'fullstack',
+                'database' => 'mysql'
+            ]
+        ];
+        
+        $app = new \micro\Application($config);
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/record'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualTo("Geographic");
     }
     
 }

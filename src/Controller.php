@@ -9,14 +9,13 @@ namespace micro;
 * 
 * @author Marco Milon <marco.milon@gmail.com>
 */
-class Controller {
+class Controller 
+{
     
     /**
     * @var object is a trait responsable to send the response to the browser
     */
     use Response;
-    
-    public $app;
     
     /**
     * @var string the path to the view file to be rendered
