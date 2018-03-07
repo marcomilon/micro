@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.0.0",
         "fullstackpe/micro-db": "^1.1",
-        "fullstackpe/micro-form": "@dev"
+        "fullstackpe/micro-form": "^1.0"
     },
     "require-dev": {
         "atoum/atoum": "^3.2"
