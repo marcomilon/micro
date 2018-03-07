@@ -34,38 +34,42 @@ Micro use the MVC pattern. There are three important directories: Controllers, M
 
 A tipical Micro Web App directory structure looks like this:
 
-* controllers
-    * ControllerClass.php
-* models
-    * ModelClass.php
-* views
-    * viewFile.php
-* web
-    * webassets 
-    * index.php
+```
+/controllers/
+    ControllerClass.php
+/models/
+    ModelClass.php
+/views/
+    viewFile.php
+/web/
+    webassets 
+    index.php
+```
 
 If you decide to use modules your can set up a directory structure like this:
 
-* modules 
-    * modulesName1
-        * controllers
-            * ControllerClass.php
-        * models
-            * ModelClass.php
-        * views
-            * viewFile.php 
-    * modulesName2
-        * controllers
-            * ControllerClass.php
-        * models
-            * ModelClass.php
-        * views
-            * viewFile.php 
-* web
-    * webassets 
-    * index.php
-    
-Please be aware that the only directory that needs to be public is the **web** directory.           
+```
+/modules/
+    modulesName1/
+        controllers/
+            ControllerClass.php
+        models/
+            ModelClass.php
+        views/
+            viewFile.php 
+    modulesName2/
+        controllers/
+            ControllerClass.php
+        models/
+            ModelClass.php
+        views/
+            viewFile.php 
+/web/
+    /webassets 
+    /index.php
+```
+
+Please be note that the only directory that needs to be public is the **web** directory.           
 
 #### Application 
 
