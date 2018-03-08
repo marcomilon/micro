@@ -3,6 +3,7 @@
 namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
+require_once __DIR__ . '/../../app2/controllers/HomeCtrl.php';
 require_once __DIR__ . '/../../app/models/HelpCategory.php';
 
 use atoum;
@@ -158,6 +159,20 @@ class Application extends atoum
             function() use($app) {
                 $queryString = [
                     'r' => 'custom/formHorizontal'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
+    public function testControllerParameters() {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderControllerParameter.html';
+    
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'home/hello'
                 ];
                 $app->run($queryString);
             }

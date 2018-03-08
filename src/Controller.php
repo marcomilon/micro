@@ -27,6 +27,8 @@ class Controller
     */
     private $basePath;
     
+    public $parameters = [];
+    
     /**
     * Set to class variables $viewPath and the $basePath. It Use reflection 
     * to determine the $viewPath and the $basePath.
