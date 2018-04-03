@@ -3,6 +3,7 @@
 namespace micro\test\units;
 
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
+require_once __DIR__ . '/../../app/controllers/MainCtrl.php';
 require_once __DIR__ . '/../../app2/controllers/HomeCtrl.php';
 require_once __DIR__ . '/../../app/models/HelpCategory.php';
 
@@ -177,6 +178,19 @@ class Application extends atoum
                 $app->run($queryString);
             }
         )->isEqualToContentsOfFile($expectedRendering);
+    }
+    
+    public function testDefaultCtrl() {
+        $config = [
+            'defaultCtrl' => 'main/action'
+        ];
+    
+        $app = new \micro\Application($config);
+        $this->output(
+            function() use($app) {
+                $app->run([]);
+            }
+        )->isEqualTo("Main Ctrl");
     }
     
 }

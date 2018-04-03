@@ -63,6 +63,10 @@ class Application
     {   
         $rParameter = isset($queryString['r']) ? filter_var($queryString['r'], FILTER_SANITIZE_STRING) : '';
         
+        if(empty($rParameter) && !empty(self::$config['defaultCtrl'])) {
+            $rParameter = self::$config['defaultCtrl'];
+        }
+        
         $route = $this->parseRoute($rParameter); 
         $module = isset($route['module']) ? $route['module'] : '';
         $controllerName = $route['controller'];
