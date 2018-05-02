@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba3096888c92f7682003cc9de0222d73",
+    "content-hash": "9ce9eb713134b9aefb193275d51f4458",
     "packages": [
         {
             "name": "fullstackpe/micro-db",
-            "version": "1.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcomilon/micro-db.git",
-                "reference": "b14a4f80f144f4e58cd3260efbbb9141290aa66d"
+                "reference": "0e78aff149116b60951c26f0948bba810c005efb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcomilon/micro-db/zipball/b14a4f80f144f4e58cd3260efbbb9141290aa66d",
-                "reference": "b14a4f80f144f4e58cd3260efbbb9141290aa66d",
+                "url": "https://api.github.com/repos/marcomilon/micro-db/zipball/0e78aff149116b60951c26f0948bba810c005efb",
+                "reference": "0e78aff149116b60951c26f0948bba810c005efb",
                 "shasum": ""
             },
             "require": {
@@ -47,11 +47,11 @@
             "keywords": [
                 "orm"
             ],
-            "time": "2018-02-09T20:33:56+00:00"
+            "time": "2018-05-02T22:55:23+00:00"
         },
         {
             "name": "fullstackpe/micro-form",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcomilon/micro-form.git",
@@ -251,7 +251,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "fullstackpe/micro-db": 20,
+        "fullstackpe/micro-form": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
