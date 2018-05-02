@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6930d3d304ff753158883b025fdb07a",
+    "content-hash": "ba3096888c92f7682003cc9de0222d73",
     "packages": [
         {
             "name": "fullstackpe/micro-db",
@@ -51,19 +51,20 @@
         },
         {
             "name": "fullstackpe/micro-form",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcomilon/micro-form.git",
-                "reference": "71883b2b727cec48cb49da492b6203bb7a197a6e"
+                "reference": "e837631e85fc5cfd574931dc559687dd32da27f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcomilon/micro-form/zipball/71883b2b727cec48cb49da492b6203bb7a197a6e",
-                "reference": "71883b2b727cec48cb49da492b6203bb7a197a6e",
+                "url": "https://api.github.com/repos/marcomilon/micro-form/zipball/e837631e85fc5cfd574931dc559687dd32da27f3",
+                "reference": "e837631e85fc5cfd574931dc559687dd32da27f3",
                 "shasum": ""
             },
             "require": {
+                "justinrainbow/json-schema": "^5.2",
                 "php": ">=7.0.0"
             },
             "require-dev": {
@@ -91,25 +92,91 @@
                 "json"
             ],
             "support": {
-                "source": "https://github.com/marcomilon/micro-form/tree/1.0.0",
+                "source": "https://github.com/marcomilon/micro-form/tree/2.0.0",
                 "issues": "https://github.com/marcomilon/micro-form/issues"
             },
-            "time": "2018-03-02T22:04:25+00:00"
+            "time": "2018-05-02T20:40:02+00:00"
+        },
+        {
+            "name": "justinrainbow/json-schema",
+            "version": "5.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "8560d4314577199ba51bf2032f02cd1315587c23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/8560d4314577199ba51bf2032f02cd1315587c23",
+                "reference": "8560d4314577199ba51bf2032f02cd1315587c23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.1",
+                "json-schema/json-schema-test-suite": "1.2.0",
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "bin": [
+                "bin/validate-json"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsonSchema\\": "src/JsonSchema/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Prieto Reis",
+                    "email": "bruno.p.reis@gmail.com"
+                },
+                {
+                    "name": "Justin Rainbow",
+                    "email": "justin.rainbow@gmail.com"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                },
+                {
+                    "name": "Robert Schönthal",
+                    "email": "seroscho@googlemail.com"
+                }
+            ],
+            "description": "A library to validate a json schema.",
+            "homepage": "https://github.com/justinrainbow/json-schema",
+            "keywords": [
+                "json",
+                "schema"
+            ],
+            "time": "2018-02-14T22:26:30+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "atoum/atoum",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atoum/atoum.git",
-                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a"
+                "reference": "c5279d0ecd4e2d53af6b38815db2cafee8fc46b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atoum/atoum/zipball/6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
-                "reference": "6f4ab88f3a1826aed2372c9f7f0d53b9303f672a",
+                "url": "https://api.github.com/repos/atoum/atoum/zipball/c5279d0ecd4e2d53af6b38815db2cafee8fc46b6",
+                "reference": "c5279d0ecd4e2d53af6b38815db2cafee8fc46b6",
                 "shasum": ""
             },
             "require": {
@@ -117,13 +184,13 @@
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "ext-xml": "*",
-                "php": "^5.6.0 || ^7.0.0"
+                "php": "^5.6.0 || ^7.0.0 <7.4.0"
             },
             "replace": {
                 "mageekguy/atoum": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~1.12"
+                "friendsofphp/php-cs-fixer": "^2"
             },
             "suggest": {
                 "atoum/stubs": "Provides IDE support (like autocompletion) for atoum",
@@ -179,7 +246,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2017-09-07T08:27:13+00:00"
+            "time": "2018-03-15T22:46:39+00:00"
         }
     ],
     "aliases": [],
