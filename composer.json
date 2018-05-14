@@ -1,6 +1,6 @@
 {
     "name": "fullstackpe/micro",
-    "description": "Lightweight MVC framework",
+    "description": "Lightweight PHP Router",
     "license": "MIT",
     "keywords": ["framework"],
     "authors": [
@@ -17,9 +17,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "fullstackpe/micro-db": "dev-master",
-        "fullstackpe/micro-form": "dev-master"
+        "php": ">=7.0.0"
     },
     "require-dev": {
         "atoum/atoum": "^3.2"

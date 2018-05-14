@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use micro\Application;
 use micro\Controller;
-use micro\helpers\form\Builder;
 
 class CustomCtrl extends Controller
 {
@@ -43,36 +42,5 @@ class CustomCtrl extends Controller
     public function viewconfig() {
         return $this->render('viewconfig');
     }
-    
-    public function record() {
-        $condition = [
-            ['=', 'help_category_id', '1']
-        ];
-        $model = \app\models\HelpCategory::find()->where($condition)->one();
-        return $model->name;
-    }
-    
-    public function form() {
-        $json = '[
-            "name",
-            "lastname"
-        ]';
-        
-        $builder = new Builder();
-        $form = $builder->render($json);
-        
-        return $form;
-    }
-    
-    public function formHorizontal() {
-        $json = '[
-            "name",
-            "lastname"
-        ]';
-    
-        $builder = new Builder();
-        $form = $builder->render($json);
-    
-        return $form;
-    }
+
 }

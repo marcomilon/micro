@@ -5,7 +5,6 @@ namespace micro\test\units;
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
 require_once __DIR__ . '/../../app/controllers/MainCtrl.php';
 require_once __DIR__ . '/../../app2/controllers/HomeCtrl.php';
-require_once __DIR__ . '/../../app/models/HelpCategory.php';
 
 use atoum;
 
@@ -103,63 +102,6 @@ class Application extends atoum
             function() use($app) {
                 $queryString = [
                     'r' => 'custom/viewconfig'
-                ];
-                $app->run($queryString);
-            }
-        )->isEqualToContentsOfFile($expectedRendering);
-    }
-    
-    public function testRunModel() {
-        
-        $config = [
-            'key' => 'Config value',
-            'db' => [
-                'servername' => '127.0.0.1',
-                'username' => 'root',
-                'password' => '',
-                'database' => 'mysql'
-            ]
-        ];
-        
-        $app = new \micro\Application($config);
-        $this->output(
-            function() use($app) {
-                $queryString = [
-                    'r' => 'custom/record'
-                ];
-                $app->run($queryString);
-            }
-        )->isEqualTo("Geographic");
-    }
-    
-    public function testForm() {
-        $expectedRendering = dirname(__FILE__) . '/../../data/renderForm.html';
-        
-        $app = new \micro\Application();
-        $this->output(
-            function() use($app) {
-                $queryString = [
-                    'r' => 'custom/form'
-                ];
-                $app->run($queryString);
-            }
-        )->isEqualToContentsOfFile($expectedRendering);
-    }
-    
-    public function testHorizontalForm() {
-        $expectedRendering = dirname(__FILE__) . '/../../data/renderFormHorizontal.html';
-    
-        $config = [
-            'form' => [
-                'text' => dirname(__FILE__) . '/../../app/templates/horizontal/input-text.php'
-            ]
-        ];
-    
-        $app = new \micro\Application($config);
-        $this->output(
-            function() use($app) {
-                $queryString = [
-                    'r' => 'custom/formHorizontal'
                 ];
                 $app->run($queryString);
             }

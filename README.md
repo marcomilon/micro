@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/fullstackpe/micro/v/stable)](https://packagist.org/packages/fullstackpe/micro) [![Build Status](https://travis-ci.org/marcomilon/micro.svg?branch=master)](https://travis-ci.org/marcomilon/micro)
 
-Micro is a lightweight PHP framework that implements the MVC pattern.
+Micro is a lightweight PHP router.
 
 ### Installation
 
@@ -20,25 +20,17 @@ If you prefer you can create a composer.json in your project folder.
 }
 ```
 
-### Basic application template
-
-You can install a Micro basic application template by running the following command under a Web-accessible folder:
-
-> composer create-project --prefer-dist fullstackpe/micro-basic-app basic
-
 ### How it works?
 
-Micro use the MVC pattern. There are three important directories: Controllers, Models and Views.
+Micro use a php router. It matchs urls with PHP classes (Controllers).
 
 #### Directory structure
 
-A tipical Micro Web App directory structure looks like this:
+To use a url like this: **index.php?r=controllerName/viewName** your directory structure should be:
 
 ```
 /controllers/
     ControllerClass.php
-/models/
-    ModelClass.php
 /views/
     viewFile.php
 /web/
@@ -46,27 +38,23 @@ A tipical Micro Web App directory structure looks like this:
     index.php
 ```
 
-If you decide to use modules your can set up a directory structure like this:
+To use a url like this: **index.php?r=moduleName/controllerName/viewName** your directory structure should be:
 
 ```
 /modules/
     modulesName1/
         controllers/
             ControllerClass.php
-        models/
-            ModelClass.php
         views/
             viewFile.php 
     modulesName2/
         controllers/
             ControllerClass.php
-        models/
-            ModelClass.php
         views/
             viewFile.php 
 /web/
-    /webassets 
-    /index.php
+    webassets 
+    index.php
 ```
 
 Please be note that the only directory that needs to be public is the **web** directory.           
@@ -82,13 +70,7 @@ For example:
 <?php 
 
 $config = [
-    'key' => 'Config value',
-    'db' => [
-        'servername' => '127.0.0.1',
-        'username' => 'root',
-        'password' => 'fullstack',
-        'database' => 'mysql'
-    ]
+    'key' => 'Config value'
 ];
 
 $app = new \micro\Application($config);
@@ -122,49 +104,6 @@ class CustomCtrl extends Controller
             'arg1' => $arg1,
             'arg2' => $arg2
         ]);
-    }
-}
-
-```
-
-#### Models
-
-Model class are stored in the model directory and can be use to manage tables on a Mysql Db. 
-Model is abstract to use it you have implement two functions: tableName and dbConnection.
-
-For example
-
-```php
-<?php 
-
-namespace app\models;
-
-use micro\Application;
-use micro\Model;
-
-class HelpCategory extends Model {
-    
-    /**
-    * Returns the table name associated with this active record
-    *
-    * @return string table name
-    */
-    public static function tableName() 
-    {
-        return 'help_category';
-    }
-    
-    /**
-    * Returns the db connection
-    *
-    * @return \micro\db\Connection a db connection
-    */
-    public static function dbConnection() 
-    {
-        $config = self::getConfig();
-        $db = $config['db'];
-        
-        return new \micro\db\Connection($db['servername'], $db['username'], $db['password'], $db['database']);
     }
 }
 
