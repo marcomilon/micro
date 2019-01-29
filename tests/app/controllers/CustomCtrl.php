@@ -17,6 +17,11 @@ class CustomCtrl extends Controller
         return "Hello world";
     }
     
+    public function partial() 
+    {
+        return $this->renderPartial('partial');
+    }
+    
     public function hello() 
     {
         return $this->render('hello');

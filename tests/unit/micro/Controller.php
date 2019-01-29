@@ -11,6 +11,20 @@ use atoum;
 class Controller extends atoum
 {
 
+    public function testRenderPartial()
+    {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderPartial.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'custom/partial'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
+
     public function testRender() 
     {
         $expectedRendering = dirname(__FILE__) . '/../../data/renderCustomCtrlHello.html';

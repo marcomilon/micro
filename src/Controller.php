@@ -61,6 +61,21 @@ class Controller
     }
     
     /**
+    * Render a view without the layout.
+    *
+    * @param string $view is the filename of the view to be rendered
+    * @param array $params are the variables to be rendered on the view file
+    */    
+    public function renderPartial($view, $params = [])
+    {
+        try {
+            return $this->renderView($view, $params);
+        } catch (\Exception $e) {
+            $this->send($e->getMessage(), 500);
+        }
+    }
+    
+    /**
     * Render the view file. It use the class variable $viewPath.
     *
     * @param string $view is the filename of the view to be rendered
