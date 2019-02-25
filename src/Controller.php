@@ -53,7 +53,7 @@ class Controller
     {
         try {
             $content = $this->renderView($view, $params);
-            $out = $this->renderLayout($content);
+            $out = $this->renderLayout($content, $params);
             return $out;
         } catch (\Exception $e) {
             $this->send($e->getMessage(), 500);
@@ -97,11 +97,12 @@ class Controller
     * The default layout file is views/layouts/main.php
     *
     * @param string $content is a string that hold the rendered webpage
+    * @param array $params are the variables to be rendered on the view file
     * @return string with the rendered view ready to be sent to the browser
     */
-    private function renderLayout($content) 
+    private function renderLayout($content, $params) 
     {
-        $params = ['content' => $content];
+        $params = array_merge(['content' => $content], $params);
         $file = $this->basePath . '/views/layouts/main.php';
         if(is_readable($file)) {
             return $this->renderFile($file, $params);

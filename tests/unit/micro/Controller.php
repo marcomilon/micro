@@ -5,11 +5,26 @@ namespace micro\test\units;
 require_once __DIR__ . '/../../app/controllers/CustomCtrl.php';
 require_once __DIR__ . '/../../app/modules/modulo/controllers/AppCtrl.php';
 require_once __DIR__ . '/../../app/modules/nolayout/controllers/NolayoutCtrl.php';
+require_once __DIR__ . '/../../app3/controllers/HomeappCtrl.php';
 
 use atoum;
 
 class Controller extends atoum
 {
+
+    public function testRenderLayout()
+    {
+        $expectedRendering = dirname(__FILE__) . '/../../data/renderLayoutCtrl.html';
+        $app = new \micro\Application();
+        $this->output(
+            function() use($app) {
+                $queryString = [
+                    'r' => 'homeapp/hello'
+                ];
+                $app->run($queryString);
+            }
+        )->isEqualToContentsOfFile($expectedRendering);
+    }
 
     public function testRenderPartial()
     {
